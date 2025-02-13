@@ -1,3 +1,16 @@
+const express = require('express');
+const path = require('path');
+const app = express();
+const indexPath = path.join(__dirname, '..', 'pages');
+
+app.get("/", (req, res) => res.sendFile(indexPath + '/index.html'));
+app.get("/about.html", (req, res) => res.sendFile(indexPath + '/about.html'));
+app.get("/contact-me.html", (req, res) => res.sendFile(indexPath + '/contact-me.html'));
+app.get("*", (req, res) => res.sendFile(indexPath + '/404.html'));
+
+const PORT = 8080;
+app.listen(PORT);
+/*
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
@@ -50,3 +63,4 @@ http.createServer(function (req, res) {
    }
 
 }).listen(8080, '172.31.55.95');
+*/
